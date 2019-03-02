@@ -22,6 +22,7 @@ class CreateAlumnisTable extends Migration
             $table->text('address')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

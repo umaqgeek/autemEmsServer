@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { PrivateRoute } from './PrivateRoute';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from '../screens/Header';
 import NoMatch from '../screens/NoMatch';
 import MainPage from '../screens/MainPage';
+import LoginPage from '../screens/LoginPage';
 
 class App extends Component {
   render () {
@@ -16,6 +16,7 @@ class App extends Component {
             <Header />
             <Switch>
               <Route exact path='/' component={MainPage} />
+              <Route exact path='/loginpage' component={LoginPage} />
               <Route component={NoMatch} />
             </Switch>
           </div>
@@ -25,4 +26,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'));

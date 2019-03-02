@@ -12,9 +12,13 @@ class AlumniController extends Controller
 {
     public $successStatus = 200;
 
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['store', 'listAll', 'list', 'login']]);
+    }
+
     function store(Request $request)
     {
-        // return Alumni::create($req->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
@@ -46,6 +50,7 @@ class AlumniController extends Controller
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $alumni = Auth::user();
+            Auth::logout();
             $success['token'] =  $alumni->createToken('AutemEmsServer')->accessToken;
             return response()->json(['success' => $success], $this->successStatus);
         }

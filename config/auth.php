@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'alumnis',
+        'passwords' => 'users',
     ],
 
     /*
@@ -37,14 +37,13 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'passport',
-            'provider' => 'alumnis',
-            'hash' => false,
+            'provider' => 'alumnis'
         ],
     ],
 
@@ -66,15 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'alumnis' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Alumni::class,
+            'model' => \App\Models\Alumni::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Alumni::class,
+        ],
     ],
 
     /*
@@ -94,9 +93,14 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'alumnis',
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'alumnis' => [
+            'provider' => 'alumnis',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 
