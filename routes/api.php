@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/event', 'EventController@store');
     Route::delete('/event/{id}', 'EventController@remove');
 

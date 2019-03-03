@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends Component {
   render() {
@@ -32,11 +33,13 @@ class LoginPage extends Component {
             <br />
 
           <button type='button' className='btn btn-success mr-3'>Submit</button>
-          <button type='button' className='btn btn-primary'> Register </button>
+          <Link to='/registerpage'>
+            <button type='button' className='btn btn-primary'> Register </button>
+          </Link>
 
           <br />
-          <div className='mt-5'><br /></div>
           <div className='mt-3'><br /></div>
+          <div className='mt-2'><br /></div>
           <div>
             <center>
               <a href='https://www.facebook.com/kidzeclipes' target='_blank'>Developed by Umar Mukhtar</a> <br />

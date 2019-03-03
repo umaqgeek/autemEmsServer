@@ -7,7 +7,7 @@ class LoginPage extends Component {
       <div className='container'>
         <br />
         <div className='col-md-4 card card-body mt-5'>
-          <center className='py-5'>
+          <center className='py-5' style={{height: '450px'}}>
             <h2>Ops!<br />Nothing to see here ..</h2>
             <br />
             <Link to='/'>

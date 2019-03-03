@@ -13,7 +13,7 @@ class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['listAll', 'list']]);
+        $this->middleware('auth:api', ['except' => ['listAll', 'list']]);
     }
 
     function store(Request $request)
@@ -25,11 +25,14 @@ class EventController extends Controller
 
     function listAll(Request $request)
     {
-        $deleted = isset($request->deleted) ? $request->deleted : 1;
+        $deleted = isset($request->deleted) ? $request->deleted : 0;
         $events = Event::with(array('alumnis'));
         if ($deleted != 'all') {
             $events->where('deleted', $deleted);
         }
+        $events->orderBy('eventDate', 'ASC')
+        ->orderBy('start', 'ASC')
+        ->orderBy('end', 'ASC');
         return $events->get();
     }
 

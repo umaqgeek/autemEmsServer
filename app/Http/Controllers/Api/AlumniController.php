@@ -14,7 +14,7 @@ class AlumniController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['store', 'listAll', 'list', 'login']]);
+        $this->middleware('auth:api', ['except' => ['store', 'listAll', 'list', 'login']]);
     }
 
     function store(Request $request)
