@@ -69247,6 +69247,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -69255,9 +69259,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -69270,13 +69274,52 @@ var Register =
 function (_Component) {
   _inherits(Register, _Component);
 
-  function Register() {
+  function Register(props) {
+    var _this;
+
     _classCallCheck(this, Register);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Register).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this, props));
+    _this.state = {
+      dataServer: {
+        name: '',
+        phone: '',
+        email: '',
+        password: '',
+        cPassword: ''
+      },
+      loadingText: ''
+    };
+    _this.inputHandler = _this.inputHandler.bind(_assertThisInitialized(_this));
+    _this.clearForm = _this.clearForm.bind(_assertThisInitialized(_this));
+    _this.submitForm = _this.submitForm.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Register, [{
+    key: "inputHandler",
+    value: function inputHandler(obj) {
+      this.setState(_objectSpread({}, this.state, {
+        dataServer: _objectSpread({}, this.state.dataServer, _defineProperty({}, obj.target.name, obj.target.value))
+      }));
+    }
+  }, {
+    key: "clearForm",
+    value: function clearForm() {
+      this.setState(_objectSpread({}, this.state, {
+        dataServer: {
+          name: '',
+          phone: '',
+          email: '',
+          password: '',
+          cPassword: ''
+        }
+      }));
+    }
+  }, {
+    key: "submitForm",
+    value: function submitForm() {}
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -69293,29 +69336,46 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        placeholder: "Enter your name here"
+        name: "name",
+        placeholder: "Enter your name here",
+        onChange: this.inputHandler,
+        value: this.state.dataServer.name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        placeholder: "Enter your phone number here"
+        name: "phone",
+        placeholder: "Enter your phone number here",
+        onChange: this.inputHandler,
+        value: this.state.dataServer.phone
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        placeholder: "Enter your email here"
+        name: "email",
+        placeholder: "Enter your email here",
+        onChange: this.inputHandler,
+        value: this.state.dataServer.email
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
-        placeholder: "Enter your password here"
+        name: "password",
+        placeholder: "Enter your password here",
+        onChange: this.inputHandler,
+        value: this.state.dataServer.password
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
-        placeholder: "Enter your confirm password"
+        name: "cPassword",
+        placeholder: "Enter your confirm password",
+        onChange: this.inputHandler,
+        value: this.state.dataServer.cPassword
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-primary mr-3"
+        className: "btn btn-primary mr-3",
+        onClick: this.submitForm
       }, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-dark mr-3"
+        className: "btn btn-dark mr-3",
+        onClick: this.clearForm
       }, "Clear"))));
     }
   }]);

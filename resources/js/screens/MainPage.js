@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class MainPage extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       events: [],
       searchEvents: [],
